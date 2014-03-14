@@ -1,0 +1,29 @@
+Functionalities:
+	Provide live image of rear activity captured by the camera attached to the bike
+	Capture images from the video, with the timestamp and current location
+	Keep record of each journey (video, pictures taken, route)
+
+	Extras
+		Trace the route traveled after each journey
+		Usage Stats: average journey time, distance, etc
+		...
+
+Structure:
+	Home
+		Login (or register)
+		About Indicia
+	About Indicia: basic description, talk to us form (?)
+	After login screen:
+		Usage statistics
+		Photo map
+		Journey record
+		Start a new ride (only on mobile)
+		Settings
+	On a ride
+		Full screen video
+		Click anywhere to take a picture and save (with the location)
+		Click on the corner to pause/end the ride
+
+Style:
+	Different styles for mobile and pc access
+	Mobile style tries to emulate a regular phone app
