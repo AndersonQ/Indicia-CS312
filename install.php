@@ -4,25 +4,25 @@
  */
  	include 'config.php';
 	
-	$db = new msqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 	//Check DB connection
-	if(db->connect_errno > 0)
+	if($db->connect_errno > 0)
 		die("Unable to connect to database. Error: " . $db->connect_error);
 
 	/* Create tables statements */
 	//User credentials
+	$table_name = $table_prefix . "user_credentials";
 	$user_credentials = <<<SQL
-		create table $table_prefix . user_credentials
-		(id int not null auto_incremet primary key,
-		 email varchar(100) not null UNIQUE,
+		create table $table_name
+		(id int not null auto_increment primary key,
+		 email varchar(100) not null unique,
 		 pass varchar(64) not null,
 		 salt varchar(64) not null)
 SQL;
-
 	/* Creating tables */
-	$res = db->query($user_credentials);
+	$res = $db->query($user_credentials);
 	//check if table was created
-	if(!res)
-		die("Error whilie creating 'user_credentials' table: " . db->error);
+	if(!$res)
+		die("Error whilie creating 'user_credentials' table: " . $db->error);
 ?>
