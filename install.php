@@ -14,7 +14,7 @@
 	//User credentials
 	$table_name = $table_prefix . "user_credentials";
 	$user_credentials = <<<SQL
-		create table $table_name
+		create table $table_name IF NOT EXISTS
 		(id int not null auto_increment primary key,
 		 email varchar(100) not null unique,
 		 pass varchar(64) not null,
