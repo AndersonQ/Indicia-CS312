@@ -40,6 +40,10 @@ SQL;
 	$user = $_POST["user_email"];
 	$pass = $_POST["user_pass"];
 
+	//Validate e-mail
+	if(!filter_var($user, FILTER_VALIDATE_EMAIL))
+		die("<h1>$user is NOT a valid email!!</h1>");
+
 	//Add user on database
 	addUser($user, $pass);
 
