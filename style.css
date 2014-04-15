@@ -82,3 +82,11 @@ footer {
 	font-size: 13px;
 	text-align: center;
 }
+
+#player {
+	text-align: center;
+}
+
+#video-still {
+	cursor: pointer;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Indicia</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+
+<div id="player">
+	<img src="stills/ishot-37.jpg" id="video-still" alt="Video" />
+</div>
+
+<script type="text/javascript">
+var video_still = document.getElementById('video-still');
+var initial_still = 37;
+var final_still = 82;
+var current_still = 38;
+
+video_still.onclick = function() {
+	// TODO call ajax to save to database along with data (and location?)
+	alert("Saving frame " + current_still);
+}
+
+setInterval(function() {
+    video_still.src = 'stills/ishot-' + current_still + '.jpg';
+    current_still = (current_still != final_still) ? (current_still + 1) : initial_still;
+}, 500);
+</script>
+
+</body>
+</html>
