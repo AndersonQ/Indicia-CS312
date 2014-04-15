@@ -195,7 +195,7 @@ footer {
 
 .signup-message b {
 	font-weight: 400;
-	font-size: 25px;
+	font-size: 26px;
 }
 
 .signup-form {
@@ -203,7 +203,7 @@ footer {
 }
 
 .signup-form input {
-	width: 95%;
+	width: 90%;
 }
 
 .login-link {
@@ -222,12 +222,12 @@ input[type=password] {
 	color: #333;
 }
 
-input[type=submit] {
+button[type=submit] {
 	background: green;
 	padding: 7px 10px;
 	border: 1px solid rgba(0,0,0,0.1);
 	border-radius: 5px;
 	font: 15px 'Roboto', Arial;
 	color: #fff;
-	margin: 10px 0 0;
+	margin: 10px 0;
 }
