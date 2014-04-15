@@ -195,11 +195,11 @@ footer {
 
 .signup-message b {
 	font-weight: 400;
-	font-size: 19px;
+	font-size: 25px;
 }
 
 .signup-form {
-	margin: 10px 0;
+	margin: 20px 0 5px;
 }
 
 .signup-form input {
@@ -227,7 +227,7 @@ input[type=submit] {
 	padding: 7px 10px;
 	border: 1px solid rgba(0,0,0,0.1);
 	border-radius: 5px;
-	cursor: pointer;
 	font: 15px 'Roboto', Arial;
 	color: #fff;
+	margin: 10px 0 0;
 }
