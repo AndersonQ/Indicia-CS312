@@ -5,13 +5,13 @@
 
 /* MySQL conf */
 // The name of the database
-define('DB_NAME', 'ixb13128');
+define('DB_NAME', 'indicia');
 // MySQL database username
-define('DB_USER', 'ixb13128');
+define('DB_USER', 'root');
 // MySQL database password
-define('DB_PASSWORD', 'tchingso');
+define('DB_PASSWORD', 'slhqYsuu');
 // MySQL hostname
-define('DB_HOST', 'devweb2013.cis.strath.ac.uk');
+define('DB_HOST', '127.0.0.1');
 //Prefix to all tables
 $table_prefix = 'ind_';
 ?>
