@@ -1,8 +1,22 @@
 <?php
 include_once('config.php');
-include_once('secure.php');
-//Database table to storing user credentials
 $table = $table_prefix . "user_credentials";
+
+// TODO verify if is not logged in
+
+/*
+ * Secure passorwd, if receives a salt it calculates the hash with the 'salt'.
+ * Otherwise it generates a 'salt' and return the hash and the new 'salt' 
+ */
+function securePassword($pass, $salt = null) {
+	//There isn't a salt, so generate one
+	if ($salt == null)
+		$salt = hash('sha256', mt_rand());
+
+	$hash = hash('sha256', $pass . $salt);
+
+	return array($hash, $salt);
+}
 
 function authenticateUser($user, $pass) {
 	global $table;
@@ -16,7 +30,7 @@ function authenticateUser($user, $pass) {
 	}
 
 	//Get user's salt
-	$query = "select email, pass, salt
+	$query = "select id, email, pass, salt
 			from $table
 			where email = \"$user\"";
 	//Execute query
@@ -26,15 +40,19 @@ function authenticateUser($user, $pass) {
 		http_response_code(500);
 		die('There was an error running the query [' . $db->error . ']');
 	}
-	//The user doen't exixt if no row is returned
+	//The user doesn't exist if no row is returned
 	if ($res->num_rows == 0) return false;
 	//Fetch the row
 	$row = $res->fetch_assoc();
 	
 	$cred = securePassword($pass, $row['salt']);
 	
-	//Check user credentials and return true or false
-	return ($cred[0] == $row['pass']) && ($user == $row['email']);
+	//Check user credentials and return user id or false
+	if (($cred[0] == $row['pass']) && ($user == $row['email'])) {
+		return $row['id'];
+	}
+
+	return false;
 }
 
 //Get user name and password from $_POST global array
@@ -43,15 +61,15 @@ $pass = @$_POST["user_pass"];
 
 //Validate e-mail
 if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
-	if (authenticateUser($user, $pass)) {
+	if ($userid = authenticateUser($user, $pass)) {
 
 		// clear out any existing session that may exist
 		session_start();
 		session_destroy();
 		session_start();
 
-			$_SESSION['signed_in'] = true;
-			$_SESSION['username'] = $user;
+		$_SESSION['signed_in'] = true;
+		$_SESSION['userid'] = $userid;
 
 			// Login ok
 		echo "<h1>Login successful</h1>";

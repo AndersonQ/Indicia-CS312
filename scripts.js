@@ -19,8 +19,10 @@ function ajax_login() {
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
 				if (XMLHttpRequestObject.status == 200) {
-					loadContent('inc.home.php');
+					// Login successful
+					window.location.href = './';
 				} else {
+					// Login error
 					// alert("Invalid. " + XMLHttpRequestObject.responseText + "(enviou " + username + " " + password + ")");
 					document.getElementById('login-form-error-msg').style.display = 'block';
 				}
@@ -34,16 +36,44 @@ function ajax_login() {
 	}
 }
 
+function save_picture(picture) {	
+	if (XMLHttpRequestObject) {
+		var loaderDiv = document.getElementById('loading');
+		loaderDiv.style.display = 'block';
+		XMLHttpRequestObject.open("POST", 'save_shot.php', true);
+
+		XMLHttpRequestObject.onreadystatechange = function() {
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					alert('Saved to database!');
+				} else {
+					alert('Error ' + XMLHttpRequestObject.status);
+				}
+
+				loaderDiv.style.display = 'none';
+			}
+
+		}
+		XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+		XMLHttpRequestObject.send("picture=" + picture);
+	}
+}
+
 function getData(dataSource, divID) {
 	if (XMLHttpRequestObject) {
 		var obj = document.getElementById(divID);
 		var loaderDiv = document.getElementById('loading');
 		loaderDiv.style.display = 'block';
-		XMLHttpRequestObject.open("GET", dataSource);
+		XMLHttpRequestObject.open("GET", "inc." + dataSource + ".php");
 
 		XMLHttpRequestObject.onreadystatechange = function() {
-			if (XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200) {
-				obj.innerHTML = XMLHttpRequestObject.responseText;
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					obj.innerHTML = XMLHttpRequestObject.responseText;
+					if (dataSource == 'player') startPlayer();
+				} else {
+					obj.innerHTML = '<div class="error-message">Error ' + XMLHttpRequestObject.status + '</div>';
+				}
 			}
 
 			loaderDiv.style.display = 'none';
@@ -64,8 +94,7 @@ function startPlayer() {
 	var current_still = 38;
 
 	video_still.onclick = function() {
-		// TODO call ajax to save to database along with data (and location?)
-		alert("Saving frame " + current_still);
+		save_picture(document.getElementById('video-still').src);
 	}
 
 	setInterval(function() {
@@ -73,3 +102,21 @@ function startPlayer() {
 	    current_still = (current_still != final_still) ? (current_still + 1) : initial_still;
 	}, 500);
 }
+
+window.onload = window.onpopstate = function(event) {
+	// alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+	var page = document.location.href.split("#");
+	// alert(page);
+	if (typeof page[1] === 'undefined' || page[1] == '') {
+		document.getElementById('back-button').style.display = 'none';
+		loadContent('home');
+	} else {
+		if (page[1] != 'signup' && page[1] != 'login') {
+			document.getElementById('back-button').style.display = 'block';
+		} else {
+			document.getElementById('back-button').style.display = 'none';
+		}
+
+		loadContent(page[1]);
+	}
+};

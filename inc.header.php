@@ -8,12 +8,13 @@
 <script type="text/javascript" src="scripts.js"></script>
 </head>
 
-<body onLoad="startPlayer();">
+<body>
 
-<div id="player">
-	<img src="stills/ishot-37.jpg" id="video-still" alt="Video" />
+<div id="loading">
+	<img src="images/ajax-loader.gif" alt="Loading" class="loader" />
 </div>
 
-
-</body>
-</html>
+<header>
+	<div id="back-button"><a href="#">&lt; Back</a></div>
+	<h1><a href="./"><?php if (isset($title) && $title != "") { echo $title; } else { echo "Indicia"; } ?></a></h1>
+</header>

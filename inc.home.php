@@ -1,16 +1,16 @@
 <?php
 include_once('functions.php');
-if (!is_logged_in()) die("Forbidden");
+if (!is_logged_in()) die('<div class="error-message">Error: you need to login to access this page.</div>');
 ?>
 
 	<ul id="options">
-		<li><a href="#" onclick="loadContent('player.html');return false;">Start a new ride</a></li>
-		<li><a href="#">Journey record</a></li>
-		<li><a href="#">Photo map</a></li>
-		<li><a href="#">Usage statistics</a></li>
-		<li><a href="#">Settings</a></li>
+		<li><a href="#player">Start a new ride</a></li>
+		<li><a href="#journey">Journey record</a></li>
+		<li><a href="#photomap">Photo map</a></li>
+		<li><a href="#stats">Usage statistics</a></li>
+		<li><a href="#settings">Settings</a></li>
 	</ul>
 
 	<div style="text-align:center">
-		<a href="logout.php" class="footer-link">Sign out</a>
+		<a href="logout.php" class="footer-link">Sign out</a><br />
 	</div>

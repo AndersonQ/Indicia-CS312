@@ -8,4 +8,6 @@
 			<button type="submit" id="submit-button">Create account</button>
 		</form>
 
+		<a href="#login" class="footer-link">Login with existing account &raquo;</a>
+
 	</div>

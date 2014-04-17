@@ -4,7 +4,9 @@ body {
 	font: 16px 'Roboto', Arial;
 	color: #222;
 	font-weight: 300;
-	margin-top: 80px;
+	margin-top: 60px;
+	padding: 5px;
+	background: #fff;
 }
 
 a {
@@ -17,43 +19,37 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: #efefef;
+	background: #333;
 	padding: 10px;
 }
 
 header h1 {
-	font-weight: 300;
+	font-weight: 400;
 	width: 200px;
 	margin: 0 auto;
 	text-align: center;
+	color: #fff;
+	font-size: 25px;
+	line-height: 30px;
 }
 
-#menu_div {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 10px;
-	padding: 10px;
+header h1 a {
+	color: #fff;
 }
 
-#menu_link {
-	font-size: 18px;
-}
-
-#menu {
-	list-style: none;
-	position: absolute;
-	top: 100%;
-	right: 0;
-	display: none;
+header #back-button {
+	font-size: 20px;
+	vertical-align: middle;
+	float: left;
+	line-height: 30px;
 }
 
 #options {
 	border: 1px solid #efefef;
 	border-radius: 5px;
-	margin: 20px;
 	list-style: none;
 	padding: 0;
+	margin: 0;
 }
 
 #options > li {
@@ -70,7 +66,8 @@ header h1 {
 	padding: 10px;
 }
 
-#options > li > a:hover {
+#options > li > a:hover,
+#options > li > a:active {
 	background-color: #efefef;
 }
 
@@ -81,108 +78,23 @@ header h1 {
 footer {
 	font-size: 13px;
 	text-align: center;
-	margin: 20px;
+	margin-top: 10px;
 }
 
 #player {
 	text-align: center;
-}
-
-#video-still {
-	cursor: pointer;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic);
-
-body {
-	font: 16px 'Roboto', Arial;
-	color: #222;
-	font-weight: 300;
-	margin-top: 80px;
-}
-
-a {
-	text-decoration: none;
-	color: orange;
-}
-
-header {
-	position: fixed;
-	top: 0;
+	background: #000;
+	position: absolute;
+	top: 50px;
+	bottom: 0;
 	left: 0;
 	right: 0;
-	background: #efefef;
-	padding: 10px;
-}
-
-header h1 {
-	font-weight: 300;
-	width: 200px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#menu_div {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 10px;
-	padding: 10px;
-}
-
-#menu_link {
-	font-size: 18px;
-}
-
-#menu {
-	list-style: none;
-	position: absolute;
-	top: 100%;
-	right: 0;
-	display: none;
-}
-
-#options {
-	border: 1px solid #efefef;
-	border-radius: 5px;
-	margin: 20px;
-	list-style: none;
-	padding: 0;
-}
-
-#options > li {
-	border-bottom: 1px solid #efefef;
-	margin: 0;
-}
-
-#options > li > a {
-	display: block;
-	background: #fbfbfb url('images/right.png') no-repeat right;
-	background-size: 5px 15px;
-	background-origin: content-box;
-	font-weight: 400;
-	padding: 10px;
-}
-
-#options > li > a:hover {
-	background-color: #efefef;
-}
-
-#options > li > a:last-child {
-	border-bottom: 0;
-}
-
-footer {
-	font-size: 13px;
-	text-align: center;
-}
-
-#player {
-	text-align: center;
+	color: #fff;
 }
 
 #video-still {
 	cursor: pointer;
+	width: 100%;
 }
 
 .signup-message,
@@ -190,7 +102,6 @@ footer {
 	background: #fbfbfb;
 	border: 1px solid #efefef;
 	border-radius: 5px;
-	margin: 5px;
 	padding: 10px;
 	text-align: center;
 }
@@ -250,4 +161,20 @@ button[type=submit] {
 	font-size: 13px;
 	margin: 5px 0;
 	display: none;
+}
+
+div.error-message {
+	background: #f2dede;
+	border: 1px solid #ebccd1;
+	border-radius: 4px;
+	color: #a94442;
+	padding: 15px;
+	margin: 20px;
+}
+
+#journey {
+}
+
+#journey img {
+	width: 95px;
 }
