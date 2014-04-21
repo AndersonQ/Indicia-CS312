@@ -4,7 +4,7 @@
 
 		<form class="signup-form" method="post" action="AddUser.php">
 			<input type="email" name="user_email" placeholder="Your email"><br />
-			<input type="password" name="user_pass"><br />
+			<input type="password" name="user_pass" placeholder="Your Password"><br />
 			<button type="submit" id="submit-button">Create account</button>
 		</form>
 
