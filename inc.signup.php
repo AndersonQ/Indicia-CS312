@@ -4,12 +4,9 @@
 
 		<form id="signup-form" onsubmit="ajax_signup(); return false;" onchange="ajax_validate_signup();">
 			<input type="email" name="user_email" placeholder="Your email"><br />
-<<<<<<< HEAD
-			<input type="password" name="user_pass"><br />
-			<div id="form-error-msg">Invalid username or password.</div>
-=======
 			<input type="password" name="user_pass" placeholder="Your Password"><br />
->>>>>>> 6658da1be70f0c7910f296dcdddd4f14e5890dea
+			<div id="form-error-msg">Invalid username or password.</div>
+
 			<button type="submit" id="submit-button">Create account</button>
 		</form>
 
