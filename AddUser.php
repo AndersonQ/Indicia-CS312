@@ -23,6 +23,22 @@
 			//Check DB connection
 			if($db->connect_errno > 0)
 				die("Unable to connect to database. Error: " . $db->connect_error);
+			
+			//Verify if there isn't a user with this e-mail
+			$querry = <<<SQL
+				select email from $table
+					where email = "$user"
+SQL;
+			$res = $db->query($querry);
+			if($res->num_rows != 0)
+			{	
+				$msg = "E-mail $user already registered! Sing in or choose a new one";
+				echo "<script type=\"text/javascript\">";
+					echo "window.alert(\"$msg\");";
+				echo "</script>";
+				die("E-mail $user already registered! Sing in or choose a new one");
+			}
+
 
 			$pass = securePassword($pass);
 			$addUserSQL = <<<SQL
