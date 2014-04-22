@@ -7,7 +7,7 @@ include('inc.header.php');
 
 <?php
 if (!is_logged_in()) {
-	echo '<script type="text/javascript">self.location.href="#signup";</script>';
+	echo '<script type="text/javascript">self.location.href="#login";</script>';
 }
 
 include('inc.footer.php');

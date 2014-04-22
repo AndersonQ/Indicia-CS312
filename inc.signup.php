@@ -7,9 +7,9 @@
 			<input type="password" name="user_pass" placeholder="Your Password"><br />
 			<div id="form-error-msg">Invalid username or password.</div>
 
-			<button type="submit" id="submit-button">Create account</button>
+			<button type="submit" id="submit-button">Sing up</button>
 		</form>
 
-		<a href="#login" class="footer-link">Login with existing account &raquo;</a>
+		<a href="#login" class="footer-link">Sing in with existing account &raquo;</a>
 
 	</div>
