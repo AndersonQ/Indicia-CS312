@@ -10,6 +10,6 @@
 			<button type="submit" id="submit-button">Sign up</button>
 		</form>
 
-		<a href="#login" class="footer-link">Sign in with existing account &raquo;</a>
+		<a href="#signin" class="footer-link">Sign in with existing account &raquo;</a>
 
 	</div>

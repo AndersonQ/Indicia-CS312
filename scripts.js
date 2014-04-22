@@ -6,15 +6,15 @@ if (window.XMLHttpRequest) {
 	XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-function ajax_login() {
-	var obj = document.getElementById('login-form');
+function ajax_signin() {
+	var obj = document.getElementById('signin-form');
 	var username = obj.elements[0].value;
 	var password = obj.elements[1].value;
 
 	if (XMLHttpRequestObject) {
 		var loaderDiv = document.getElementById('loading');
 		loaderDiv.style.display = 'block';
-		XMLHttpRequestObject.open("POST", 'login.php', true);
+		XMLHttpRequestObject.open("POST", 'signin.php', true);
 
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
@@ -176,7 +176,7 @@ window.onload = window.onpopstate = function(event) {
 		document.getElementById('back-button').style.display = 'none';
 		loadContent('home');
 	} else {
-		if (page[1] != 'signup' && page[1] != 'login') {
+		if (page[1] != 'signup' && page[1] != 'signin') {
 			document.getElementById('back-button').style.display = 'block';
 		} else {
 			document.getElementById('back-button').style.display = 'none';
