@@ -62,7 +62,6 @@ $pass = @$_POST["user_pass"];
 //Validate e-mail
 if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
 	if ($userid = authenticateUser($user, $pass)) {
-
 		// clear out any existing session that may exist
 		session_start();
 		session_destroy();
@@ -71,15 +70,14 @@ if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
 		$_SESSION['signed_in'] = true;
 		$_SESSION['userid'] = $userid;
 
-			// Login ok
-		echo "<h1>Login successful</h1>";
-			exit;
+		echo "Logged in";
+		exit;
 	} else {
 		http_response_code(403);
-		echo "<h1>Email or passowrd invalid!</h1>";
+		die("Email or passowrd invalid");
 	}
 } else {
 	http_response_code(403);
-	echo "<h1>$user is NOT a valid email!!</h1>";
+	die("$user is not a valid email");
 }
 ?>

@@ -93,8 +93,11 @@ footer {
 }
 
 #video-still {
+	display: block;
 	cursor: pointer;
 	width: 100%;
+	max-width: 627px;
+	margin: 0 auto;
 }
 
 .signup-message,
@@ -113,11 +116,11 @@ footer {
 	margin: 0 0 10px;
 }
 
-.signup-form {
+form {
 	margin: 20px 0 5px;
 }
 
-.signup-form input {
+input {
 	width: 90%;
 }
 
@@ -137,6 +140,10 @@ input[type=password] {
 	color: #333;
 }
 
+input.invalid {
+	border-color: red;
+}
+
 button[type=submit] {
 	background: blue;
 	padding: 7px 10px;
@@ -148,6 +155,11 @@ button[type=submit] {
 	cursor: pointer;
 }
 
+button[type=submit]:disabled {
+	opacity: 0.25;
+	cursor: default;
+}
+
 #loading {
 	display: none;
 	text-align: center;
@@ -155,7 +167,7 @@ button[type=submit] {
 	margin: 20px;
 }
 
-#login-form-error-msg {
+#form-error-msg {
 	color: red;
 	font-weight: 400;
 	font-size: 13px;
@@ -177,4 +189,8 @@ div.error-message {
 
 #journey img {
 	width: 95px;
+}
+
+#loading-content {
+	display: none;
 }

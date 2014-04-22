@@ -24,7 +24,7 @@ function ajax_login() {
 				} else {
 					// Login error
 					// alert("Invalid. " + XMLHttpRequestObject.responseText + "(enviou " + username + " " + password + ")");
-					document.getElementById('login-form-error-msg').style.display = 'block';
+					document.getElementById('form-error-msg').style.display = 'block';
 				}
 
 				loaderDiv.style.display = 'none';
@@ -33,6 +33,71 @@ function ajax_login() {
 		}
 		XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
 		XMLHttpRequestObject.send("user_email=" + username + "&user_pass=" + password);
+	}
+}
+
+function ajax_signup() {
+	var obj = document.getElementById('signup-form');
+	var username = obj.elements[0].value;
+	var password = obj.elements[1].value;
+
+	if (XMLHttpRequestObject) {
+		var loaderDiv = document.getElementById('loading');
+		loaderDiv.style.display = 'block';
+		XMLHttpRequestObject.open("POST", 'signup.php', true);
+
+		XMLHttpRequestObject.onreadystatechange = function() {
+			var formMsg = document.getElementById('form-error-msg');
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					// Signup successful
+					formMsg.style.display = 'none';
+					window.location.href = './';
+				} else {
+					// Signup error
+					// alert("Invalid. " + XMLHttpRequestObject.responseText + "(enviou " + username + ")");
+					formMsg.innerHTML = XMLHttpRequestObject.responseText;
+					formMsg.style.display = 'block';
+				}
+
+				loaderDiv.style.display = 'none';
+			}
+
+		}
+		XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+		XMLHttpRequestObject.send("user_email=" + username + "&user_pass=" + password);
+	}
+}
+
+function ajax_validate_signup() {
+	var obj = document.getElementById('signup-form');
+	var username = obj.elements[0].value;
+	var button = document.getElementById('submit-button');
+
+	if (XMLHttpRequestObject) {
+		XMLHttpRequestObject.open("POST", 'signup_ajax_validator.php', true);
+
+		XMLHttpRequestObject.onreadystatechange = function() {
+			var formMsg = document.getElementById('form-error-msg');
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					// Validated successfully
+					formMsg.style.display = 'none';
+					obj.elements[0].className = 'valid';
+					button.disabled = false;
+				} else {
+					// Not validated 
+					// alert("Invalid. " + XMLHttpRequestObject.responseText + "(enviou " + username + ")");
+					formMsg.innerHTML = XMLHttpRequestObject.responseText;
+					formMsg.style.display = 'block';
+					obj.elements[0].className = 'invalid';
+					button.disabled = true;
+				}
+			}
+
+		}
+		XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+		XMLHttpRequestObject.send("user_email=" + username);
 	}
 }
 
