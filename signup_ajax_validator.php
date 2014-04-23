@@ -1,4 +1,6 @@
 <?php
+include_once('functions.php');
+
 if (!isset($_POST['user_email']) || $_POST['user_email'] == "") {
 	http_response_code(400);
 	die('Please provide an email.');

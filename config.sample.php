@@ -19,7 +19,7 @@ $table_prefix = 'ind_';
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 //Check DB connection
 if ($db->connect_errno > 0) {
-	http_response_code(500);
+	header('X-PHP-Response-Code: 500', true, 500);
 	die("Unable to connect to database. Error: " . $db->connect_error);
 }
 ?>
