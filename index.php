@@ -23,17 +23,17 @@ include_once('functions.php');
 </header>
 
 <section id="main">
-	Loading...
+	<!-- The content loaded using ajax will be placed here -->
 </section>
 
 <?php
 if (!is_logged_in()) {
-	echo '<script type="text/javascript">self.location.href="#signin";</script>';
+	echo '<script type="text/javascript">window.location.href="#signin";</script>';
 }
 ?>
 
 <footer>
-<!-- 		Session: <?php print_r($_SESSION); ?> -->
+	<!-- Session: <?php print_r($_SESSION); ?> -->
 </footer>
 
 </body>
