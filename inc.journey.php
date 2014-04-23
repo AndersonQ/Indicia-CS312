@@ -14,7 +14,7 @@ function get_pictures() {
 		die("Unable to connect to database. Error: " . $db->connect_error);
 	}
 
-	//Get user's salt
+	//Get pictures
 	$query = "select picture, date
 			from {$table_prefix}pictures
 			where user_id = " . $_SESSION['userid'];
