@@ -59,6 +59,10 @@ if ($userid = addUser($user, $pass)) {
 	$_SESSION['signed_in'] = true;
 	$_SESSION['userid'] = $userid;
 
+	// send registration e-mail to user
+	$to = $user;
+	include('signup_mail.php');
+
 	echo "Registered.";
 	exit;
 
