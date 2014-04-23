@@ -1,11 +1,12 @@
+// AJAX preloading
 var XMLHttpRequestObject = false;
-
 if (window.XMLHttpRequest) {
 	XMLHttpRequestObject = new XMLHttpRequest();
 } else if (window.ActiveXObject) {
 	XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
+// Called when the login button is pressed. Retrieves inputs from form and validates the login and password
 function ajax_signin() {
 	var obj = document.getElementById('signin-form');
 	var username = obj.elements[0].value;
@@ -36,6 +37,7 @@ function ajax_signin() {
 	}
 }
 
+// Called when the signup button is pressed. Retrieves inputs from the form and sends it to the PHP script
 function ajax_signup() {
 	var obj = document.getElementById('signup-form');
 	var username = obj.elements[0].value;
@@ -69,6 +71,7 @@ function ajax_signup() {
 	}
 }
 
+// Called when the sign up form is changed and validates the email using a PHP script
 function ajax_validate_signup() {
 	var obj = document.getElementById('signup-form');
 	var username = obj.elements[0].value;
@@ -101,6 +104,7 @@ function ajax_validate_signup() {
 	}
 }
 
+// Called when the player is clicked. Receives the url of the image of the frame and sends it to the PHP script
 function save_picture(picture) {	
 	if (XMLHttpRequestObject) {
 		var loaderDiv = document.getElementById('loading');
@@ -124,12 +128,13 @@ function save_picture(picture) {
 	}
 }
 
+// AJAX default loader function. Loads the page in dataSource and writes its content inside divID
 function getData(dataSource, divID) {
 	if (XMLHttpRequestObject) {
 		var obj = document.getElementById(divID);
 		var loaderDiv = document.getElementById('loading');
 		loaderDiv.style.display = 'block';
-		XMLHttpRequestObject.open("GET", "inc." + dataSource + ".php");
+		XMLHttpRequestObject.open("GET", dataSource);
 
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
@@ -148,10 +153,12 @@ function getData(dataSource, divID) {
 	}
 }
 
+// Just a wrapper to getData to simplify call
 function loadContent(dataSource) {
-	getData(dataSource, 'main');
+	getData("inc." + dataSource + ".php", 'main');
 }
 
+// Called when the player page is loaded. Loads a new image for the player in a timed interval, making it look like a video
 function startPlayer() {
 	var video_still = document.getElementById('video-still');
 	var initial_still = 37;
@@ -168,6 +175,9 @@ function startPlayer() {
 	}, 500);
 }
 
+// Event that is called to retrieve the AJAX content. onload is called when the window is loaded
+// and onpopstate is called when the url in the address bar is updated (in the case of adding a #)
+// in the end
 window.onload = window.onpopstate = function(event) {
 	// alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
 	var page = document.location.href.split("#");

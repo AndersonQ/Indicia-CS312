@@ -14,4 +14,12 @@ define('DB_PASSWORD', 'your_password');
 define('DB_HOST', '127.0.0.1');
 //Prefix to all tables
 $table_prefix = 'ind_';
+
+//Connecting to DB
+$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+//Check DB connection
+if ($db->connect_errno > 0) {
+	http_response_code(500);
+	die("Unable to connect to database. Error: " . $db->connect_error);
+}
 ?>
