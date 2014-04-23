@@ -140,7 +140,7 @@ function getData(dataSource, divID) {
 			if (XMLHttpRequestObject.readyState == 4) {
 				if (XMLHttpRequestObject.status == 200) {
 					obj.innerHTML = XMLHttpRequestObject.responseText;
-					if (dataSource == 'player') startPlayer();
+					if (dataSource == 'inc.player.php') startPlayer();
 				} else {
 					obj.innerHTML = '<div class="error-message">Error ' + XMLHttpRequestObject.status + '</div>';
 				}
