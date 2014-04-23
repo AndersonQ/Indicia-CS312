@@ -129,12 +129,12 @@ function save_picture(picture) {
 }
 
 // AJAX default loader function. Loads the page in dataSource and writes its content inside divID
-function getData(dataSource, divID) {
+function getData(dataSource) {
 	if (XMLHttpRequestObject) {
-		var obj = document.getElementById(divID);
+		var obj = document.getElementById('main');
 		var loaderDiv = document.getElementById('loading');
 		loaderDiv.style.display = 'block';
-		XMLHttpRequestObject.open("GET", dataSource);
+		XMLHttpRequestObject.open("GET", "inc." + dataSource + ".php");
 
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
@@ -151,11 +151,6 @@ function getData(dataSource, divID) {
 
 		XMLHttpRequestObject.send(null);
 	}
-}
-
-// Just a wrapper to getData to simplify call
-function loadContent(dataSource) {
-	getData("inc." + dataSource + ".php", 'main');
 }
 
 // Called when the player page is loaded. Loads a new image for the player in a timed interval, making it look like a video
@@ -184,7 +179,7 @@ window.onload = window.onpopstate = function(event) {
 	// alert(page);
 	if (typeof page[1] === 'undefined' || page[1] == '') {
 		document.getElementById('back-button').style.display = 'none';
-		loadContent('home');
+		getData('home');
 	} else {
 		if (page[1] != 'signup' && page[1] != 'signin') {
 			document.getElementById('back-button').style.display = 'block';
@@ -192,6 +187,6 @@ window.onload = window.onpopstate = function(event) {
 			document.getElementById('back-button').style.display = 'none';
 		}
 
-		loadContent(page[1]);
+		getData(page[1]);
 	}
 };
