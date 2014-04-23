@@ -1,4 +1,11 @@
 <?php
+include_once('functions.php');
+
+if (is_logged_in()) {
+	http_response_code(400);
+	die('Bad request: user already signed in.');
+}
+
 //Get user name and password from $_POST global array
 $user = @$_POST["user_email"];
 $pass = @$_POST["user_pass"];
@@ -22,14 +29,7 @@ function securePassword($pass) {
 
 function addUser($user, $pass) {
 	global $table_prefix;
-
-	//Connecting to DB
-	$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-	//Check DB connection
-	if ($db->connect_errno > 0) {
-		http_response_code(500);
-		die("Unable to connect to database. Error: " . $db->connect_error);
-	}
+	global $db;
 
 	$pass = securePassword($pass);
 	$addUserSQL = <<<SQL

@@ -13,14 +13,6 @@ if (!filter_var($user, FILTER_VALIDATE_EMAIL)) {
 
 include_once('config.php');
 
-//Connecting to DB
-$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-//Check DB connection
-if ($db->connect_errno > 0) {
-	http_response_code(500);
-	die("Unable to connect to database. Error: " . $db->connect_error);
-}
-
 //Query user
 $query = "select email
 		from {$table_prefix}user_credentials

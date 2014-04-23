@@ -8,14 +8,9 @@ if (!isset($_GET['start']) || $_GET['start'] != 1) {
 	exit;
 }
 
-include_once('config.php');
-
-$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
 echo "Connecting to database...<br>";
 
-//Check DB connection
-if ($db->connect_errno > 0) die("Unable to connect to database. Error: " . $db->connect_error);
+include_once('config.php');
 
 echo "Connected to database.<br>Creating tables...<br>";
 

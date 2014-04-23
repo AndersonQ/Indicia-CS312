@@ -1,8 +1,12 @@
 <?php
-include_once('config.php');
-$table = $table_prefix . "user_credentials";
+include_once('functions.php');
 
-// TODO verify if is not logged in
+if (is_logged_in()) {
+	http_response_code(400);
+	die('Bad request: user already signed in.');
+}
+
+include_once('config.php');
 
 /*
  * Secure passorwd, if receives a salt it calculates the hash with the 'salt'.
@@ -19,15 +23,9 @@ function securePassword($pass, $salt = null) {
 }
 
 function authenticateUser($user, $pass) {
-	global $table;
-	
-	//Connecting to DB
-	$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-	//Check DB connection
-	if ($db->connect_errno > 0) {
-		http_response_code(500);
-		die("Unable to connect to database. Error: " . $db->connect_error);
-	}
+	global $table_prefix;
+	global $db;
+	$table = $table_prefix . "user_credentials";
 
 	//Get user's salt
 	$query = "select id, email, pass, salt
