@@ -23,7 +23,7 @@ $message = '<!DOCTYPE html>
 	
 <section style="padding: 30px 70px; color: #444; font-weight: light; line-height: 22px;">
 	<p><b>Welcome!</b></p>
-	<p>You are receiving this message to confirm your registration with Indicia. To sign in, please use your email address <u>' . $to . '</u>.</p>
+	<p>You are receiving this message to confirm your registration with Indicia. To sign in, please use your email address <u>' . $to . '</u> along with the password provided during registration.</p>
 	<p>Thanks for using Indicia!</p>
 	<p>Indicia Team</p>
 </section>
