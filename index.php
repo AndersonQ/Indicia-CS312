@@ -28,7 +28,12 @@ include_once('functions.php');
 
 <?php
 if (!is_logged_in()) {
-	echo '<script type="text/javascript">window.location.href="#signin";</script>';
+	echo '
+	<script type="text/javascript">
+	var page = document.location.href.split("#");
+	if (page[1] != "signin" && page[1] != "signup" && page[1] != "forgotpassword")
+		window.location.href="#signin";
+	</script>';
 }
 ?>
 

@@ -1,7 +1,7 @@
 <?php
-if (!isset($to)) die('No email target specified.');
+if (!isset($to) || !isset($token)) die('No email or token specified.');
 
-$subject = 'Indicia Registration';
+$subject = 'Indicia password reset';
 
 $headers = "From: Indicia <no-reply@indicia.com>\r\n";
 $headers .= "To: " . $to;
@@ -20,9 +20,11 @@ $message = '<!DOCTYPE html>
 <h1 style="font-weight: 300; margin: 30px auto; padding: 0 20px; color: #111; font-size: 30px; max-width: 600px;">Indicia</h1>
 	
 <div style="padding: 0 20px; color: #606060; font-weight: light; font-size: 15px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
-	<strong>Welcome!</strong><br><br>
-	You are receiving this message to confirm your registration with Indicia. To sign in, please use your email address <u>' . $to . '</u> along with the password provided during registration.<br><br>
-	Thanks for using Indicia!<br>
+	<strong>Password reset</strong><br><br>
+	You recently requested for your Indicia account password to be reset. To continue and create a new password, click the link below:<br><br>
+	<a href="https://devweb2013.cis.strath.ac.uk/~wkb13232/WAD/indicia/reset_password.php?token=' . $token . '">https://devweb2013.cis.strath.ac.uk/~wkb13232/WAD/indicia/reset_password.php?token=' . $token . '</a><br><br>
+	Please note that this link will only work for 2 hours after your request.<br><br>If you did not request a password reset, please ignore this email.<br><br>
+	Indicia
 </div>
 
 </body>

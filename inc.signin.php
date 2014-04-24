@@ -15,5 +15,6 @@ if (is_logged_in()) {
 			<button type="submit" id="submit-button">Sign in</button>
 		</form>
 
+		<a href="#forgotpassword" class="footer-link">I forgot my password &raquo;</a><br />
 		<a href="#signup" class="footer-link">Create an account &raquo;</a>
 	</div>

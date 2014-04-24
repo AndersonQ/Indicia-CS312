@@ -104,6 +104,36 @@ function ajax_validate_signup() {
 	}
 }
 
+// Called when the user is in the 'forgot password' page
+function ajax_password_reset() {
+	var obj = document.getElementById('signin-form');
+	var username = obj.elements[0].value;
+
+	if (XMLHttpRequestObject) {
+		XMLHttpRequestObject.open("POST", 'forgot.php', true);
+
+		XMLHttpRequestObject.onreadystatechange = function() {
+			var formMsg = document.getElementById('form-error-msg');
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					// Validated successfully
+					formMsg.style.display = 'none';
+					obj.style.display = 'none';
+					document.getElementById('help-message').innerHTML = "An email was sent to " + username + ".<br>Please follow the instructions in the email to reset your password.<br>";
+				} else {
+					// Not validated 
+					// alert("Invalid. " + XMLHttpRequestObject.responseText + "(enviou " + username + ")");
+					formMsg.innerHTML = XMLHttpRequestObject.responseText;
+					formMsg.style.display = 'block';
+				}
+			}
+
+		}
+		XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+		XMLHttpRequestObject.send("user_email=" + username);
+	}
+}
+
 // Called when the player is clicked. Receives the url of the image of the frame and sends it to the PHP script
 function save_picture(picture) {	
 	if (XMLHttpRequestObject) {
@@ -140,7 +170,7 @@ function getData(dataSource) {
 			if (XMLHttpRequestObject.readyState == 4) {
 				if (XMLHttpRequestObject.status == 200) {
 					obj.innerHTML = XMLHttpRequestObject.responseText;
-					if (dataSource == 'inc.player.php') startPlayer();
+					if (dataSource == 'player') startPlayer();
 				} else {
 					obj.innerHTML = '<div class="error-message">Error ' + XMLHttpRequestObject.status + '</div>';
 				}
