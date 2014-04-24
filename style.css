@@ -210,3 +210,9 @@ div.error-message {
 #loading-content {
 	display: none;
 }
+
+#map-canvas
+{ 
+	height: 100% 
+}
+

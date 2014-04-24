@@ -171,10 +171,31 @@ function startPlayer() {
 }
 
 //Called when user clicks in a image on journey page
+//function openImg(img, date)
 function openImg(img)
 {
+//TODO make googlemaps work
+/*var imported = document.createElement('script');
+imported.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+document.head.appendChild(imported);*/
+
+
+		var imgcaption = document.getElementById('imgcaption');
 		var showImg = document.getElementById('showImg');
-		showImg.src = img;
+		var lat = parseFloat(img.getAttribute("data-lat"));
+		var lon = parseFloat(img.getAttribute("data-lon"));
+		var date = img.getAttribute("alt");
+		showImg.src = img.getAttribute("src");
+		imgcaption.innerHTML = "Taken in " + date + "<br>lat: " + lat + "<br>lon: " + lon;
+
+		/*var mapOptions = {
+          center: new google.maps.LatLng(40.736, -154.865),
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+      //google.maps.event.addDomListener(window, 'load', initialize);*/
 }
 
 // Event that is called to retrieve the AJAX content. onload is called when the window is loaded
