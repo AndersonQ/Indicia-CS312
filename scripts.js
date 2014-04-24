@@ -239,7 +239,7 @@ window.onload = window.onpopstate = function(event) {
 		document.getElementById('back-button').style.display = 'none';
 		getData('home');
 	} else {
-		if (page[1] != 'signup' && page[1] != 'signin') {
+		if (page[1] != 'signup' && page[1] != 'signin' && page[1] != 'forgotpassword') {
 			document.getElementById('back-button').style.display = 'block';
 		} else {
 			document.getElementById('back-button').style.display = 'none';
