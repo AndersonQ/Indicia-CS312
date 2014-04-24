@@ -24,7 +24,7 @@ SQL;
 $res = $db->query($create);
 //check if table was deleted
 if (!$res)
-	die("Error whilie deleting table {$table_prefix}pictures" . $db->error);
+	die("Error whilie deleting table {$table_prefix}pictures: " . $db->error);
 //User credentials
 $create = <<<SQL
 DROP TABLE IF EXISTS {$table_prefix}user_credentials;
@@ -33,7 +33,16 @@ SQL;
 $res = $db->query($create);
 //check if table was deleted
 if (!$res)
-	die("Error whilie deleting table {$table_prefix}user_credentials" . $db->error);
+	die("Error whilie deleting table {$table_prefix}user_credentials: " . $db->error);
+//Tokens
+$create = <<<SQL
+DROP TABLE IF EXISTS {$table_prefix}restore_pwd_tokens;
+SQL;
+//Deleting table if it exists
+$res = $db->query($create);
+//check if table was deleted
+if (!$res)
+  die("Error whilie deleting table {$table_prefix}restore_pwd_tokens: " . $db->error);
 
 
 /* Create tables statements */
@@ -54,7 +63,7 @@ SQL;
 $res = $db->query($create);
 //check if table was created
 if (!$res)
-	die("Error whilie creating table {$table_prefix}user_credentials" . $db->error);
+	die("Error whilie creating table {$table_prefix}user_credentials: " . $db->error);
 
 //Pictures
 //Create tables statement
@@ -68,7 +77,7 @@ CREATE TABLE {$table_prefix}pictures (
   date datetime NOT NULL,
   PRIMARY KEY (id),
   KEY user_id (user_id),
-  CONSTRAINT ind_pictures_ibfk_1 FOREIGN KEY (user_id) REFERENCES ind_user_credentials (id) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT ind_pictures_ibfk_1 FOREIGN KEY (user_id) REFERENCES {$table_prefix}user_credentials (id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SQL;
 //Creating table
@@ -76,6 +85,22 @@ $res = $db->query($create);
 //check if table was created
 if (!$res)
 	die("Error whilie creating table {$table_prefix}pictures: " . $db->error);
+
+//Tokens
+$create = <<<SQL
+CREATE TABLE `{$table_prefix}restore_pwd_tokens` (
+  `user_id` int(11) unsigned NOT NULL,
+  `token` varchar(64) NOT NULL DEFAULT '',
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`user_id`),
+  CONSTRAINT `ind_restore_pwd_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `{$table_prefix}user_credentials` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SQL;
+//Creating table
+$res = $db->query($create);
+//check if table was created
+if (!$res)
+  die("Error whilie creating table {$table_prefix}restore_pwd_tokens: " . $db->error);
 
 echo "Tables created.<br><br>Installation complete.";
 
