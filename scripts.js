@@ -129,12 +129,12 @@ function save_picture(picture) {
 }
 
 // AJAX default loader function. Loads the page in dataSource and writes its content inside divID
-function getData(dataSource, divID) {
+function getData(dataSource) {
 	if (XMLHttpRequestObject) {
-		var obj = document.getElementById(divID);
+		var obj = document.getElementById('main');
 		var loaderDiv = document.getElementById('loading');
 		loaderDiv.style.display = 'block';
-		XMLHttpRequestObject.open("GET", dataSource);
+		XMLHttpRequestObject.open("GET", "inc." + dataSource + ".php");
 
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
@@ -151,11 +151,6 @@ function getData(dataSource, divID) {
 
 		XMLHttpRequestObject.send(null);
 	}
-}
-
-// Just a wrapper to getData to simplify call
-function loadContent(dataSource) {
-	getData("inc." + dataSource + ".php", 'main');
 }
 
 // Called when the player page is loaded. Loads a new image for the player in a timed interval, making it look like a video
@@ -175,6 +170,34 @@ function startPlayer() {
 	}, 500);
 }
 
+//Called when user clicks in a image on journey page
+//function openImg(img, date)
+function openImg(img)
+{
+//TODO make googlemaps work
+/*var imported = document.createElement('script');
+imported.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+document.head.appendChild(imported);*/
+
+
+		var imgcaption = document.getElementById('imgcaption');
+		var showImg = document.getElementById('showImg');
+		var lat = parseFloat(img.getAttribute("data-lat"));
+		var lon = parseFloat(img.getAttribute("data-lon"));
+		var date = img.getAttribute("alt");
+		showImg.src = img.getAttribute("src");
+		imgcaption.innerHTML = "Taken in " + date + "<br>lat: " + lat + "<br>lon: " + lon;
+
+		/*var mapOptions = {
+          center: new google.maps.LatLng(40.736, -154.865),
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+      //google.maps.event.addDomListener(window, 'load', initialize);*/
+}
+
 // Event that is called to retrieve the AJAX content. onload is called when the window is loaded
 // and onpopstate is called when the url in the address bar is updated (in the case of adding a #)
 // in the end
@@ -184,7 +207,7 @@ window.onload = window.onpopstate = function(event) {
 	// alert(page);
 	if (typeof page[1] === 'undefined' || page[1] == '') {
 		document.getElementById('back-button').style.display = 'none';
-		loadContent('home');
+		getData('home');
 	} else {
 		if (page[1] != 'signup' && page[1] != 'signin') {
 			document.getElementById('back-button').style.display = 'block';
@@ -192,6 +215,6 @@ window.onload = window.onpopstate = function(event) {
 			document.getElementById('back-button').style.display = 'none';
 		}
 
-		loadContent(page[1]);
+		getData(page[1]);
 	}
 };
