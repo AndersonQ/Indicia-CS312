@@ -22,8 +22,16 @@ include_once('config.php');
 	
 	//Fetch the rows
 	while ($row = $res->fetch_assoc()) {
-		echo '<img src="' . $row['picture'] . '" alt="' . $row['date'] . '" /> ';
+			echo '<img src="' . $row['picture'];
+			echo '" alt="' . $row['date'];
+			echo '" onclick="openImg(\'';
+			echo $row['picture'];
+			echo '\')"';
+			echo '/> ';
 	}
+
 ?>
 
 	</div>
+
+	<img id="showImg"></img>

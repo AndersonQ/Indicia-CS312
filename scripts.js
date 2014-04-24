@@ -170,6 +170,13 @@ function startPlayer() {
 	}, 500);
 }
 
+//Called when user clicks in a image on journey page
+function openImg(img)
+{
+		var showImg = document.getElementById('showImg');
+		showImg.src = img;
+}
+
 // Event that is called to retrieve the AJAX content. onload is called when the window is loaded
 // and onpopstate is called when the url in the address bar is updated (in the case of adding a #)
 // in the end
