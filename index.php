@@ -17,13 +17,9 @@ include_once('functions.php');
 
 <body>
 
-<div id="loading">
-	<img src="images/ajax-loader.gif" alt="Loading" class="loader" />
-</div>
-
 <header>
 	<div id="back-button"><a href="#">&lt; Back</a></div>
-	<h1><a href="./"><?php if (isset($title) && $title != "") { echo $title; } else { echo "Indicia"; } ?></a></h1>
+	<h1><a href="./">Indicia</a></h1>
 </header>
 
 <section id="main">
@@ -41,9 +37,9 @@ if (!is_logged_in()) {
 }
 ?>
 
-<footer>
-	<!-- Session: <?php print_r($_SESSION); ?> -->
-</footer>
+<div id="loading">
+	<img src="images/ajax-loader.gif" alt="Loading" class="loader" />
+</div>
 
 </body>
 </html>

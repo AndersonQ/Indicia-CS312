@@ -24,11 +24,11 @@ include_once('config.php');
 	//Fetch the rows
 	while ($row = $res->fetch_assoc()) {
 			echo '<img src="' . $row['picture'] . '" ';
-			echo 'alt="' . $row['date'] . '" ';
-			echo 'data-lat="' . $row['lat'] . '" ';
-			echo 'data-lon="' . $row['lon'] . '" ';
+			echo 'title="' . $row['date'] . '" ';
+			// echo 'data-lat="' . $row['lat'] . '" ';
+			// echo 'data-lon="' . $row['lon'] . '" ';
 			//echo 'onclick="openImg(\'' . $row['picture'] . '\', \'' . $row['date'] . '\')" ';
-			echo 'onclick="openImg(this)" ';
+			echo 'onclick="openImg(\'' . $row['picture'] . '\',\'' . $row['date'] . '\',\'' . $row['lat'] . '\',\'' . $row['lon'] . '\')" ';
 			echo '/> ';
 	}
 
@@ -36,11 +36,15 @@ include_once('config.php');
 
 	</div>
 
-	<div id="imgdiv">
-		<img id="showImg"></img>
-		<p id="imgcaption"></p>
+	<div id="shadow-div">
+		<div id="img-details">
+			<a href="#" onclick="closeImg(); return false;">Close</a><br />
+			<img id="showImg" />
+			<p id="imgcaption"></p>
+
+			<div id="map-canvas">
+				<!-- Load googlemaps here-->
+			</div>
+		</div>
 	</div>
 
-	<div id="map-canvas">
-		<!-- Load googlemaps here-->
-	</div>
