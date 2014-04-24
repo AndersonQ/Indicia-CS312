@@ -219,15 +219,47 @@ div.error-message {
 
 #journey img {
 	width: 95px;
+	border: 1px solid rgba(0,0,0,.1);
+	cursor: pointer;
 }
 
 #loading-content {
 	display: none;
 }
 
-#map-canvas
-{
-	width: 627px;
-	height: 473px;	
+#shadow-div {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	background: rgba(0,0,0,0.9);
+	display: none;
+	z-index: 0;
+}
+
+#img-details {
+	width: 100%;
+	max-width: 550px;
+	margin: 10px auto;
+	padding: 10px 0;
+	display: none;
+	text-align: center;
+	background: white;
+	z-index: 1;
+}
+
+#img-details #showImg {
+	width: 100%;
+	max-width: 500px;
+	margin: 10px auto;
+}
+
+#img-details #map-canvas {
+	width: 100%;
+	max-width: 500px;
+	height: 150px;
+	margin: 0 auto;
 }
 

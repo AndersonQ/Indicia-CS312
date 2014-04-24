@@ -202,17 +202,30 @@ function startPlayer() {
 
 //Called when user clicks in a image on journey page
 //function openImg(img, date)
-function openImg(img)
+function openImg(url, date, latStr, lonStr)
 {
-		//var imgcaption = document.getElementById('imgcaption');
+		var shadow_div = document.getElementById('shadow-div');
+		var details_div = document.getElementById('img-details');
+
+		var imgcaption = document.getElementById('imgcaption');
 		var showImg = document.getElementById('showImg');
-		var lat = parseFloat(img.getAttribute("data-lat"));
-		var lon = parseFloat(img.getAttribute("data-lon"));
-		var date = new Date(img.getAttribute("alt"));
-		showImg.src = img.getAttribute("src");
-		//imgcaption.innerHTML = "Taken in " + date.toString();
+		var lat = parseFloat(latStr);
+		var lon = parseFloat(lonStr);
+		var date = new Date(date);
+		showImg.src = url;
+		imgcaption.innerHTML = "Taken in " + date.toString();
 		
 		initMaps(lat, lon, date.toString());
+
+		shadow_div.style.display = 'block';
+		details_div.style.display = 'block';
+}
+
+function closeImg() {
+	var div = document.getElementById('img-details');
+	div.style.display = 'none';
+	document.getElementById('shadow-div').style.display = 'none';
+
 }
 
 function initMaps(lat, lon, date)
