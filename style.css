@@ -153,6 +153,20 @@ input.invalid {
 	border-color: red;
 }
 
+.btdel
+{
+	background: #D00000;
+	padding: 7px 10px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 5px;
+	font: 15px 'Roboto', Arial;
+	color: #fff;
+	margin: 10px 0;
+	cursor: pointer;
+}
+
+
+
 button[type=submit] {
 	background: blue;
 	padding: 7px 10px;

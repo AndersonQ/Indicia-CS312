@@ -19,5 +19,6 @@ $info = $res->fetch_assoc();
 		<b>Account:</b> <?php echo $info['email']; ?><br />
 		<b>Pictures saved:</b> <?php echo $info['pictures']; ?><br />
 		<br />
+		<a href="#delacc">Delete account</a><br>
 		<a href="signout.php">Sign out</a><br />
 	</div>

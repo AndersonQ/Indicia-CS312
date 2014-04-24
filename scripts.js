@@ -234,13 +234,34 @@ function initMaps(lat, lon, date)
 
 }
 
-function loadScript() 
+function deleteacc()
 {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-      'callback=initMaps';
-  document.body.appendChild(script);
+	var div = document.getElementById('delacc');
+	if (XMLHttpRequestObject) 
+	{
+		XMLHttpRequestObject.open("POST", 'deleteacc.php', true);
+		XMLHttpRequestObject.onreadystatechange = function() 
+		{
+			if (XMLHttpRequestObject.readyState == 4) {
+				if (XMLHttpRequestObject.status == 200) {
+					// Acc successfully deleted
+					div.innerHTML = "Account successfully deleted!";
+				}
+				else 
+				{
+					// Not deleted 
+					//alert("Invalid. " + XMLHttpRequestObject.responseText);// + "(enviou " + username + ")");
+					div.innerHTML = '<div class="error-message">Error: ' + 
+							XMLHttpRequestObject.responseText; +
+							'</div>';
+					div.style.display = 'block';
+				}
+			}
+
+		}
+		//XMLHttpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+		XMLHttpRequestObject.send(null);
+	}
 }
 
 
