@@ -14,16 +14,11 @@ function save_picture($userid, $picture) {
 	$table = $table_prefix . "pictures";
 
 	//Generating mock geolocation
-	$lat = rand(0, 90000);
-	$lon = rand(0, 180000);
-	//Chooseing signal randomly
-	if(rand(0,1))
-		$lat = -$lat;
-	if(rand(0,1))
-		$lon = -$lon;
+	$lat = rand(55785000, 55900000);//(0, 90000);
+	$lon = -rand(4100000, 4500000);//(0, 180000);
 	//Making it decimal: dd.fff
-	$lat = $lat/1000;
-	$lon = $lon/1000;
+	$lat = $lat/1000000;
+	$lon = $lon/1000000;
 
 	//Insert stmt
 	$query = "INSERT INTO $table (user_id, picture, date, lat, lon) VALUES ($userid, '$picture', NOW(), $lat, $lon)";

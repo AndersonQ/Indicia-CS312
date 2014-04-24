@@ -9,6 +9,10 @@ include_once('functions.php');
 <link rel="stylesheet" href="style.css" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script type="text/javascript" src="scripts.js"></script>
+
+<!-- GoogleMaps API -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 </head>
 
 <body>

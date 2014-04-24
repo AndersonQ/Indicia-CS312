@@ -5,9 +5,6 @@ if (!is_logged_in()) die('<div class="error-message">Error: you need to sign in 
 
 include_once('config.php');
 
-//Load GoogleMaps api
-//TODO make it work
-echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>';
 ?>
 
 	<div id="journey">
@@ -47,5 +44,3 @@ echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/j
 	<div id="map-canvas">
 		<!-- Load googlemaps here-->
 	</div>
-<script type="text/javascript">
-initialize();alert('after!!!');</script>

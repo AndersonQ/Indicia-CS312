@@ -204,29 +204,45 @@ function startPlayer() {
 //function openImg(img, date)
 function openImg(img)
 {
-//TODO make googlemaps work
-/*var imported = document.createElement('script');
-imported.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
-document.head.appendChild(imported);*/
-
-
-		var imgcaption = document.getElementById('imgcaption');
+		//var imgcaption = document.getElementById('imgcaption');
 		var showImg = document.getElementById('showImg');
 		var lat = parseFloat(img.getAttribute("data-lat"));
 		var lon = parseFloat(img.getAttribute("data-lon"));
-		var date = img.getAttribute("alt");
+		var date = new Date(img.getAttribute("alt"));
 		showImg.src = img.getAttribute("src");
-		imgcaption.innerHTML = "Taken in " + date + "<br>lat: " + lat + "<br>lon: " + lon;
-
-		/*var mapOptions = {
-          center: new google.maps.LatLng(40.736, -154.865),
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-
-      //google.maps.event.addDomListener(window, 'load', initialize);*/
+		//imgcaption.innerHTML = "Taken in " + date.toString();
+		
+		initMaps(lat, lon, date.toString());
 }
+
+function initMaps(lat, lon, date)
+{
+		var pos = new google.maps.LatLng(lat, lon);
+		var mapOptions = {
+    		zoom: 17,
+    		center: pos
+  		};
+
+		var map = new google.maps.Map(document.getElementById('map-canvas'),
+      									mapOptions);
+
+		var marker = new google.maps.Marker({
+					position: pos,
+			        map: map,
+			        title: date
+				    });
+
+}
+
+function loadScript() 
+{
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
+      'callback=initMaps';
+  document.body.appendChild(script);
+}
+
 
 // Event that is called to retrieve the AJAX content. onload is called when the window is loaded
 // and onpopstate is called when the url in the address bar is updated (in the case of adding a #)

@@ -212,7 +212,8 @@ div.error-message {
 }
 
 #map-canvas
-{ 
-	height: 100% 
+{
+	width: 627px;
+	height: 473px;	
 }
 
