@@ -286,18 +286,28 @@ function deleteacc()
 // Event that is called to retrieve the AJAX content. onload is called when the window is loaded
 // and onpopstate is called when the url in the address bar is updated (in the case of adding a #)
 // in the end
-window.onload = window.onpopstate = function(event) {
+window.onload = window.onpopstate = function(event) 
+{
 	// alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
 	var page = document.location.href.split("#");
-	// alert(page);
-	if (typeof page[1] === 'undefined' || page[1] == '') {
-		document.getElementById('back-button').style.display = 'none';
+	var backbt = document.getElementById('back-button');
+	var signoutbt = document.getElementById('signout-button');
+	if (typeof page[1] === 'undefined' || page[1] == '') 
+	{
+		backbt.style.display = 'none';
 		getData('home');
-	} else {
-		if (page[1] != 'signup' && page[1] != 'signin' && page[1] != 'forgotpassword') {
-			document.getElementById('back-button').style.display = 'block';
-		} else {
-			document.getElementById('back-button').style.display = 'none';
+	} 
+	else 
+	{
+		if (page[1] != 'signup' && page[1] != 'signin' && page[1] != 'forgotpassword') 
+		{
+			backbt.style.display = 'block';
+			signoutbt.style.display = 'block';
+		} 
+		else 
+		{
+			backbt.style.display = 'none';
+			signoutbt.style.display = 'none';
 		}
 
 		getData(page[1]);

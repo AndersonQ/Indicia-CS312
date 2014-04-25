@@ -15,8 +15,13 @@ include_once('functions.php');
 <body>
 
 <header>
-	<div id="back-button"><a href="#">&lt; Back</a></div>
-	<h1><a href="./">Indicia</a></h1>
+	<table>
+		<tr>
+			<td id="td-side-header"><div id="back-button"><a href="#">&lt; Back</a></div></td>
+			<td id="td-middle-header"><h1><a href="./">Indicia</a></h1></td>
+			<td id="td-side-header"><div id="signout-button"><a href="signout.php">Sign out</a></div></td>
+		</tr>
+	</table>
 </header>
 
 <section id="main">

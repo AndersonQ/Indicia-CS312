@@ -10,6 +10,8 @@ if (!is_logged_in()) die('<div class="error-message">Error: you need to sign in 
 		<li><a href="#account">My account</a></li>
 	</ul>
 
+<!--
 	<div style="text-align:center">
 		<a href="signout.php" class="footer-link">Sign out</a><br />
 	</div>
+-->

@@ -46,6 +46,13 @@ h2 {
 	margin: 0 auto 15px;
 }
 
+#signout-button {
+	font-size: 20px;
+	vertical-align: middle;
+	float: right;
+	line-height: 30px;
+}
+
 #back-button {
 	font-size: 20px;
 	vertical-align: middle;
@@ -283,4 +290,19 @@ div.error-message {
 
 #photomapImg {
 	width: 300px;
+}
+
+table
+{
+	width: 100%;
+}
+
+#td-side-header
+{
+	width: 20%;
+}
+
+#td-middle-header
+{
+	width: 60%;
 }

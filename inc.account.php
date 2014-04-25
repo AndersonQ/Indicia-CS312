@@ -13,12 +13,14 @@ $info = $res->fetch_assoc();
 
 ?>
 
-	<h2>My account</h2>
+	<h2 style="text-align:center">My account</h2>
 
-	<div>
+	<div style="text-align:center">
 		<b>Account:</b> <?php echo $info['email']; ?><br />
 		<b>Pictures saved:</b> <?php echo $info['pictures']; ?><br />
 		<br />
 		<a href="#delacc">Delete account</a><br>
+<!--
 		<a href="signout.php">Sign out</a><br />
+-->
 	</div>
