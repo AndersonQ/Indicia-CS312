@@ -13,7 +13,7 @@ $info = $res->fetch_assoc();
 
 ?>
 
-	<h2>Account</h2>
+	<h2>My account</h2>
 
 	<div>
 		<b>Account:</b> <?php echo $info['email']; ?><br />

@@ -7,8 +7,11 @@ include_once('config.php');
 
 ?>
 
+<h2>Delete account</h2>
+
 <div id="delacc">
-	Delete this account is irreversible, all your photos and data will be erased!<br>
-	<button class="btdel" type="button"	onclick="deleteacc()">Delete my account</button><br>
+	<b>Deleting your account is irreversible! All your photos and data will be erased.</b><br /><br />
+	Continue?<br /><br />
+	<button class="btdel" type="button"	onclick="deleteacc()">Delete my account</button><br />
 </div>
 
