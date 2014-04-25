@@ -187,6 +187,7 @@ function getData(dataSource) {
 // Called when the player page is loaded. Loads a new image for the player in a timed interval, making it look like a video
 function startPlayer() {
 	var video_still = document.getElementById('video-still');
+	var savedImg = document.getElementById('saved-msg');
 	var initial_still = 37;
 	var final_still = 82;
 	var current_still = 38;
@@ -195,9 +196,11 @@ function startPlayer() {
 		save_picture(document.getElementById('video-still').src);
 	}
 
-	setInterval(function() {
+	setInterval(function() 
+	{
 	    video_still.src = 'stills/ishot-' + current_still + '.jpg';
 	    current_still = (current_still != final_still) ? (current_still + 1) : initial_still;
+		savedImg.style.display = "none";
 	}, 500);
 }
 
