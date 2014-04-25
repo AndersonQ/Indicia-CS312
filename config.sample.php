@@ -22,4 +22,11 @@ if ($db->connect_errno > 0) {
 	header('X-PHP-Response-Code: 500', true, 500);
 	die("Unable to connect to database. Error: " . $db->connect_error);
 }
+
+$query = "use " . DB_NAME . ";";
+//Running query
+$res = $db->query($query);
+//Check it it was successful
+if (!$res)
+	die('There was an error connecting with database in the query [' . $db->error . ']');
 ?>

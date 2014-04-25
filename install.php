@@ -16,24 +16,6 @@ echo "Connected to database.<br>Creating tables...<br>";
 
 /* Deleting existing tables */
 
-//Pictures
-$create = <<<SQL
-DROP TABLE IF EXISTS {$table_prefix}pictures;
-SQL;
-//Deleting table if it exists
-$res = $db->query($create);
-//check if table was deleted
-if (!$res)
-	die("Error whilie deleting table {$table_prefix}pictures: " . $db->error);
-//User credentials
-$create = <<<SQL
-DROP TABLE IF EXISTS {$table_prefix}user_credentials;
-SQL;
-//Deleting table if it exists
-$res = $db->query($create);
-//check if table was deleted
-if (!$res)
-	die("Error whilie deleting table {$table_prefix}user_credentials: " . $db->error);
 //Tokens
 $create = <<<SQL
 DROP TABLE IF EXISTS {$table_prefix}restore_pwd_tokens;
@@ -43,6 +25,26 @@ $res = $db->query($create);
 //check if table was deleted
 if (!$res)
   die("Error whilie deleting table {$table_prefix}restore_pwd_tokens: " . $db->error);
+
+//Pictures
+$create = <<<SQL
+DROP TABLE IF EXISTS {$table_prefix}pictures;
+SQL;
+//Deleting table if it exists
+$res = $db->query($create);
+//check if table was deleted
+if (!$res)
+	die("Error whilie deleting table {$table_prefix}pictures: " . $db->error);
+
+//User credentials
+$create = <<<SQL
+DROP TABLE IF EXISTS {$table_prefix}user_credentials;
+SQL;
+//Deleting table if it exists
+$res = $db->query($create);
+//check if table was deleted
+if (!$res)
+	die("Error whilie deleting table {$table_prefix}user_credentials: " . $db->error);
 
 
 /* Create tables statements */
