@@ -172,6 +172,7 @@ function getData(dataSource) {
 				if (XMLHttpRequestObject.status == 200) {
 					obj.innerHTML = XMLHttpRequestObject.responseText;
 					if (dataSource == 'player') startPlayer();
+					else if (dataSource == 'photomap') eval(document.getElementById('loadMapsJS').innerHTML);
 				} else {
 					obj.innerHTML = '<div class="error-message">Error ' + XMLHttpRequestObject.status + '</div>';
 				}

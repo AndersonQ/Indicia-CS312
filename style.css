@@ -272,3 +272,15 @@ div.error-message {
 #img-details #imgcaption {
 	margin: 10px 0 0;
 }
+
+#photomap {
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+#photomapImg {
+	width: 300px;
+}
