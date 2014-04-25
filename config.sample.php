@@ -3,15 +3,20 @@
  * All configuration will be defined here
  */
 
+/* Host conf*/
+//The full adrees to the root directory where 
+//this site was installed
+define('HOST_ADDRESS', 'example.com');
+
 /* MySQL conf */
 // The name of the database
 define('DB_NAME', 'indicia');
 // MySQL database username
-define('DB_USER', 'root');
+define('DB_USER', 'your_db_user');
 // MySQL database password
 define('DB_PASSWORD', 'your_password');
 // MySQL hostname
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'mysql.example.com');
 //Prefix to all tables
 $table_prefix = 'ind_';
 
