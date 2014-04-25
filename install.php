@@ -12,10 +12,10 @@ echo "Connecting to database...<br>";
 
 include_once('config.php');
 
-echo "Connected to database.<br>Creating tables...<br>";
+echo "Connected to database.<br>";
 
 /* Deleting existing tables */
-
+echo "Deleting tables...<br>";
 //Tokens
 $create = <<<SQL
 DROP TABLE IF EXISTS {$table_prefix}restore_pwd_tokens;
@@ -46,8 +46,12 @@ $res = $db->query($create);
 if (!$res)
 	die("Error whilie deleting table {$table_prefix}user_credentials: " . $db->error);
 
+echo "Tables deleted.<br>";
+
 
 /* Create tables statements */
+
+echo "Creating tables...<br>";
 
 //User credentials
 //Create tables statement
