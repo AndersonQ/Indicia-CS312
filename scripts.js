@@ -215,12 +215,11 @@ function openImg(url, date, latStr, lonStr, id)
 		var delImg = document.getElementById('delImg');
 		var lat = parseFloat(latStr);
 		var lon = parseFloat(lonStr);
-		var date = new Date(date);
 		showImg.src = url;
-		imgcaption.innerHTML = "Taken in " + date.toString();
+		imgcaption.innerHTML = "Taken " + date;
 		delImg.href = "delImg.php?id=" + id;
 		
-		initMaps(lat, lon, date.toString());
+		initMaps(lat, lon, date);
 
 		shadow_div.style.display = 'block';
 		details_div.style.display = 'block';

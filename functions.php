@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/London');
 
 function is_logged_in() {
 	if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] === true) {

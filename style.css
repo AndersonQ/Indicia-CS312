@@ -259,13 +259,16 @@ div.error-message {
 #img-details #showImg {
 	width: 100%;
 	max-width: 500px;
-	margin: 10px auto;
+	margin: 10px auto 0;
 }
 
 #img-details #map-canvas {
 	width: 100%;
 	max-width: 500px;
 	height: 150px;
-	margin: 0 auto;
+	margin: 10px auto;
 }
 
+#img-details #imgcaption {
+	margin: 10px 0 0;
+}

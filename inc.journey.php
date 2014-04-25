@@ -23,9 +23,10 @@ include_once('config.php');
 	
 	//Fetch the rows
 	while ($row = $res->fetch_assoc()) {
+			$date = date('d/m/Y \a\t H:i', strtotime($row['date']));
 			echo '<img src="' . $row['picture'] . '" ';
 			echo 'title="' . $row['date'] . '" ';
-			echo 'onclick="openImg(\'' . $row['picture'] . '\',\'' . $row['date'] . '\',\'' . $row['lat'] . '\',\'' . $row['lon'] . '\', \'' . $row['id'] . '\')" ';
+			echo 'onclick="openImg(\'' . $row['picture'] . '\',\'' . $date . '\',\'' . $row['lat'] . '\',\'' . $row['lon'] . '\', \'' . $row['id'] . '\')" ';
 			echo '/> ';
 	}
 
@@ -38,11 +39,12 @@ include_once('config.php');
 			<a href="#" onclick="closeImg(); return false;">Close</a><br />
 			<img id="showImg" />
 			<p id="imgcaption"></p>
+			<a id="delImg" href="#">Delete</a><br />
 
 			<div id="map-canvas">
 				<!-- Load googlemaps here-->
 			</div>
-			<a id="delImg" href="#" return false;">Delete</a><br />
+			
 		</div>
 	</div>
 
