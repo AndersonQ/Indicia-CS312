@@ -144,9 +144,10 @@ function save_picture(picture) {
 		XMLHttpRequestObject.onreadystatechange = function() {
 			if (XMLHttpRequestObject.readyState == 4) {
 				if (XMLHttpRequestObject.status == 200) {
-					alert('Saved to database!');
+					// alert('Saved to database!');
+					document.getElementById('saved-msg').style.display = 'block';
 				} else {
-					alert('Error ' + XMLHttpRequestObject.status);
+					alert('Error saving picture: ' + XMLHttpRequestObject.status);
 				}
 
 				loaderDiv.style.display = 'none';

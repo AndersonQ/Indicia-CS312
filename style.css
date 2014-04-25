@@ -95,7 +95,7 @@ footer {
 	background: #000;
 	position: absolute;
 	top: 50px;
-	bottom: 0;
+	min-height: 100%;
 	left: 0;
 	right: 0;
 	color: #fff;
@@ -107,6 +107,12 @@ footer {
 	width: 100%;
 	max-width: 627px;
 	margin: 0 auto;
+}
+
+#player #saved-msg {
+	display: none;
+	color: orange;
+	font-weight: 400;
 }
 
 .signup-message,
