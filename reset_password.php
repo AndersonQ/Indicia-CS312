@@ -39,12 +39,15 @@ function securePassword($pass) {
 		<h1>Restore password</h1>
 
 <?php
-if (!isset($_GET['token']) || $_GET['token'] == '') {
+if (!isset($_GET['token']) || $_GET['token'] == '') 
+{
 	// If the token was not provided through GET, see if it was sent with post to reset password
-	if (!isset($_POST['token']) || $_POST['token'] == '') {
+	if (!isset($_POST['token']) || $_POST['token'] == '') 
+	{
 		echo 'Invalid token (token not provided)';
-	} else {
-
+	} 
+	else 
+	{
 		$token = $_POST['token'];
 		$new_password = securePassword($_POST['user_pass']);
 
@@ -60,28 +63,30 @@ if (!isset($_GET['token']) || $_GET['token'] == '') {
 
 		echo "Your password was successfully changed!<br />";
 	}
-} else {
+} 
+else 
+{
 	$token = $_GET['token'];
 
 	// Delete from database old tokens (older than 2 hours)
 	$query = "DELETE FROM {$table_prefix}restore_pwd_tokens WHERE (NOW() - date) > 2*60*60";
 	$res = $db->query($query);
-	if (!$res) {
+	if (!$res)
 		die('There was an error running the query [' . $db->error . ']');
-	}
 
 	$query = "SELECT t.*, u.email FROM {$table_prefix}restore_pwd_tokens t, {$table_prefix}user_credentials u WHERE t.token = '$token' AND u.id = t.user_id";
 
 	$res = $db->query($query);
-	if (!$res) {
+	if (!$res)
 		die('There was an error running the query [' . $db->error . ']');
-	}
 
 	// The token doesn't exist if no row is returned
-	if ($res->num_rows == 0) {
+	if ($res->num_rows == 0)
+	{
 		echo 'Sorry, the token you have provided is not valid.<br />Please remember that the token is only valid for two hours after the request.';
-	} else {
-
+	}
+	else 
+	{
 		// If the code got so far, the token was found.
 		$row = $res->fetch_assoc();
 		$user = $row['email'];
