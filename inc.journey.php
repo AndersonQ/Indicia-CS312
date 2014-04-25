@@ -11,7 +11,7 @@ include_once('config.php');
 
 <?php
 	//Get user's pictures
-	$query = "select picture, date, lat, lon
+	$query = "select picture, date, lat, lon, id
 			from {$table_prefix}pictures
 			where user_id = " . $_SESSION['userid'];
 	//Execute query
@@ -25,10 +25,7 @@ include_once('config.php');
 	while ($row = $res->fetch_assoc()) {
 			echo '<img src="' . $row['picture'] . '" ';
 			echo 'title="' . $row['date'] . '" ';
-			// echo 'data-lat="' . $row['lat'] . '" ';
-			// echo 'data-lon="' . $row['lon'] . '" ';
-			//echo 'onclick="openImg(\'' . $row['picture'] . '\', \'' . $row['date'] . '\')" ';
-			echo 'onclick="openImg(\'' . $row['picture'] . '\',\'' . $row['date'] . '\',\'' . $row['lat'] . '\',\'' . $row['lon'] . '\')" ';
+			echo 'onclick="openImg(\'' . $row['picture'] . '\',\'' . $row['date'] . '\',\'' . $row['lat'] . '\',\'' . $row['lon'] . '\', \'' . $row['id'] . '\')" ';
 			echo '/> ';
 	}
 
@@ -45,6 +42,7 @@ include_once('config.php');
 			<div id="map-canvas">
 				<!-- Load googlemaps here-->
 			</div>
+			<a id="delImg" href="#" return false;">Delete</a><br />
 		</div>
 	</div>
 

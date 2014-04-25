@@ -201,19 +201,20 @@ function startPlayer() {
 }
 
 //Called when user clicks in a image on journey page
-//function openImg(img, date)
-function openImg(url, date, latStr, lonStr)
+function openImg(url, date, latStr, lonStr, id)
 {
 		var shadow_div = document.getElementById('shadow-div');
 		var details_div = document.getElementById('img-details');
 
 		var imgcaption = document.getElementById('imgcaption');
 		var showImg = document.getElementById('showImg');
+		var delImg = document.getElementById('delImg');
 		var lat = parseFloat(latStr);
 		var lon = parseFloat(lonStr);
 		var date = new Date(date);
 		showImg.src = url;
 		imgcaption.innerHTML = "Taken in " + date.toString();
+		delImg.href = "delImg.php?id=" + id;
 		
 		initMaps(lat, lon, date.toString());
 
