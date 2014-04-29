@@ -6,7 +6,7 @@ if (!isset($to) || !isset($token)) die('No email or token specified.');
 
 $subject = 'Indicia password reset';
 
-$headers = "From: Indicia <no-reply@indicia.com>\r\n";
+$headers = "From: Indicia <" . RECOVER_EMAIL_ADDRESS . ">\r\n";
 $headers .= "To: " . $to;
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=\"utf-8\"\r\n";

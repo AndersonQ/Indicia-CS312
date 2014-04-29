@@ -7,6 +7,7 @@
 //The full adrees to the root directory where 
 //this site was installed
 define('HOST_ADDRESS', 'example.com');
+define('RECOVER_EMAIL_ADDRESS', 'no-reply@example.com');
 
 /* MySQL conf */
 // The name of the database
